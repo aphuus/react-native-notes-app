@@ -1,21 +1,41 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import NotesScreen from './components/NotesScreen';
+import AddNewNoteScreen from './components/AddNewNoteScreen';
 
-export default function App() {
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName='Notes'
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: '#009fe3',
+            height: 105,
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 21,
+          },
+        }}
+      >
+        <Stack.Screen
+          name='Notes'
+          component={NotesScreen}
+          options={{ title: `Notes` }}
+        />
+        <Stack.Screen
+          name='Add Note'
+          component={AddNewNoteScreen}
+          options={{ title: `Add Note` }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
