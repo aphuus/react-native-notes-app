@@ -7,7 +7,7 @@ import PlusIcon from './PlusIcon';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const NotesScreen = ({ navigation }) => {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([{ content: 'note', id: 1 }]);
 
   const saveNote = async (note_object) => {
     const existingNotes = await AsyncStorage.getItem('@notes');
@@ -21,6 +21,7 @@ const NotesScreen = ({ navigation }) => {
           note.content.toLowerCase() === note_object.content.toLowerCase()
       )
     ) {
+      console.log(jsonNotes);
       return Alert.alert(
         'Note already exist',
         'Please type something else...',
@@ -47,6 +48,9 @@ const NotesScreen = ({ navigation }) => {
     }
   };
 
+  /**
+   * Clears AsyncStorage
+   */
   const clearAll = async () => {
     try {
       await AsyncStorage.clear();

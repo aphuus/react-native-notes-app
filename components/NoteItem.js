@@ -4,18 +4,19 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import TrashIcon from './TrashIcon';
 
 const NoteItem = ({ content, id }) => {
-  // TODO -> deleteNote functuonality
-
-  const handleDelete = () => {
+  /**
+   * Todo: HandleDelete Functionality
+   */
+  const handleDelete = async () => {
     console.log(id);
   };
 
   return (
     <View style={styles.itemContainer}>
       <Text style={styles.itemText}>{content}</Text>
-      <TouchableOpacity onPress={handleDelete}>
+      {/* <TouchableOpacity onPress={handleDelete}>
         <TrashIcon />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 };

@@ -13,7 +13,7 @@ import {
 
 const AddNewNoteScreen = ({ route, navigation }) => {
   const [newNote, setNewNote] = useState('');
-  const { notes, setNotes, saveNote } = route.params;
+  const { saveNote } = route.params;
 
   const handleAddNewNote = () => {
     if (newNote === null || newNote === '') {
